@@ -64,7 +64,7 @@ def dictionary():
         image_file = None
         total_emails = None
     page = request.args.get('page', 1, type=int)
-    words = Dictionary.query.paginate(page=page, per_page=5)
+    words = Dictionary.query.paginate(page=page, per_page=3000)
     form = DeleteForm()
     return render_template('dictionary.html', words=words, form=form, 
                            image_file=image_file, total_emails=total_emails)

@@ -46,10 +46,9 @@ class TranslationHistory(db.Model):
 class Dictionary(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String(40), unique=True, nullable=False)
-    sign_video = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
-        return f"word('{self.word}', '{self.sign_video}')"
+        return f"word('{self.word}')"
     
 
 class Messages(db.Model):

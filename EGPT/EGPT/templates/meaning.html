@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- NAVIGATION BAR -->
+<div class="navigationDiv">
+    <div><i class="bi bi-book bookIcon"></i></div>
+    <div class="controlDiv d-flex justify-content-between align-items-center">
+        <!-- drop down menu -->
+        <div class="dropdown">
+            <button class="dropbtn">Available Fonts <i class="bi bi-caret-down"></i></button>
+            <div class="dropdown-content">
+              <button class="fontButton">Kanit</button>
+              <button class="fontButton">Noto Serif</button>
+              <button class="fontButton">Bebas Neue</button>
+            </div>
+        </div>
+        <!-- vertical line -->
+        <div class="verticalDiv"></div>
+        <!-- theme toggle -->
+        <div class="toggleDiv">
+            <label class="switch">
+                <input id="toggleButton" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <!-- moon icon -->
+        <div><i class="bi bi-moon-stars moonIcon"></i></div>
+    </div>
+</div>
+
+<!-- SEARCH SECTION -->
+<div class="searchDiv">
+    <form method="post" class="d-flex justify-content-center align-items-center">
+      <input class="searchInput" type="text" placeholder="Search.." name="search">
+      <input type="hidden" id="sound" name="soundHolder" value="{{ meaning['audio'] }}">
+      <button class="searchButton" type="submit"><i class="bi bi-search searchIcon"></i></button>
+    </form>
+</div>
+
+
+<!-- ANSWER SECTION -->
+<div class="answerDiv d-flex justify-content-between align-items-center">
+    <h1>{{ meaning["word"] }}</h1>
+    <button class="playButton d-flex justify-content-center align-items-center">
+        <i class="bi bi-play-fill playIcon"></i>
+    </button>
+</div>
+<h6>{{ meaning["phonetic"] }}</h6>
+
+{% for definition in meaning["meanings"]: %}
+    <!-- NOUNS SECTION -->
+    <div class="wordDiv">
+        <h3>{{ definition["part_name"] }}</h3>
+        <hr>
+        <h5>Meaning</h5>
+        <div class="listDiv">
+            <ul>
+                <li>{{ definition["definition"] }}</li>
+            </ul>
+        </div>
+        <h5>Synonyms: &nbsp;&nbsp;&nbsp;<span>{{ definition["synonym"] }}</span></h5>
+    </div>
+{% endfor %}
+
+{% endblock %}

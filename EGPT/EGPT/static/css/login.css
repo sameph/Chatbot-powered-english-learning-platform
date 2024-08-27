@@ -7,15 +7,12 @@ body, html {
 
 btn {
 	border-radius: 0
-
-  
+ 
 }
 .btn:focus, .btn:active, .btn.active, .btn:active:focus {
 	outline: 0;
   border-radius: 0
 }
-
-
 
 .btn-larger {
 	padding: 15px 40px !important;
