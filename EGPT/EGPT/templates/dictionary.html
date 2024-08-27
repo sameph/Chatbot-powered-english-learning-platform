@@ -1,0 +1,33 @@
+<!-- {% if current_user.is_authenticated and current_user.is_admin %}
+  {% extends 'admin_layout.html' %}
+{% else %} -->
+  {% extends 'layout.html' %}
+<!-- {% endif %} -->
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="{{url_for('static', filename='css/dictionary.css')}}" rel="stylesheet">
+<script src="{{url_for('static', filename='js/dictionary.js')}}"></script>
+<!-- {% if current_user.is_admin %} -->
+  <div class="dict_container" style="margin-top: 40px;">
+<!-- {% else %} -->
+  <div class="dict_container" style="margin-top: 100px;">
+<!-- {% endif %} -->
+  <h1>Dictionary</h1>
+  <input type="text" id="searchBox" onkeyup="searchWords()" placeholder="Search for words..." aria-label="Search words">
+  <ul id="wordList">
+    {% for word in words.items %}
+      <li>
+        <a href="{{ url_for('main.sign', word_id=word.id) }}">{{ word.word }}</a>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+          <form method="POST" action="{{ url_for('main.delete_word', word_id=word.id) }}">
+            {{ form.hidden_tag() }}
+            <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
+          </form>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <div id="definition" class="definition"></div>
+</div>
+{% endblock content %}

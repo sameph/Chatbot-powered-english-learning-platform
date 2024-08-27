@@ -1,0 +1,88 @@
+.dict_container {
+  font-family: 'Open Sans', sans-serif;
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+#searchBox {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #8ad7d7;
+  color: #1c1b1b;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+#wordList {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.dict_container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dict_container ul li {
+  padding: 10px;
+  background: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+.dict_container ul li:hover {
+  background: #f9f9f9;
+}
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.delete-btn:hover {
+  background: #cc0000;
+}
+.definition {
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+  transition: all 0.3s;
+}
+.delete-confirm-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+.delete-confirm-btn:hover {
+  background: #cc0000;
+}
+.delete-cancel-btn {
+  background: #d9dddd;
+  color: #0e0c0c;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.delete-cancel-btn:hover {
+  background: #b3b3b3;
+}
