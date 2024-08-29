@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from EGPT.config import Config
+import os
 
 
 db = SQLAlchemy()
@@ -26,8 +27,12 @@ def create_app(config_class=Config):
     from EGPT.users.routes import users
     from EGPT.errors.handlers import errors
     from EGPT.main.routes import main
+    # from EGPT.admin.routes import admin
     app.register_blueprint(users)
     app.register_blueprint(main)
     app.register_blueprint(errors)
+    # app.register_blueprint(admin)
+    # with app.app_context():
+    #     app.fasttext_model = FastText.load(os.path.join(app.root_path, 'static', 'fasttext.model'))
 
     return app

@@ -38,7 +38,7 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{{url_for('main.home')}}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{url_for('static', filename='img/egpt.png')}}" alt="">
         <!-- <h1 class="sitename">EGPT</h1> -->
@@ -47,9 +47,9 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{{url_for('main.home')}}" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="{{url_for('main.about')}}">About</a></li>
           <li><a href="#services">Learning</a></li>
-          <li><a href="#features">Dictionary</a></li>
+          <li><a href="{{url_for('main.dictionary')}}">Dictionary</a></li>
           <li><a href="{{url_for('main.contact_us')}}">Contact</a></li>
 
           <li class="dropdown"><a href="#"><span>user</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>

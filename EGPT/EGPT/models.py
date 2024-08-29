@@ -48,7 +48,7 @@ class Dictionary(db.Model):
     word = db.Column(db.String(40), unique=True, nullable=False)
 
     def __repr__(self):
-        return f"word('{self.word}')"
+        return f"word('{self.word}', '{self.sign_video}')"
     
 
 class Messages(db.Model):

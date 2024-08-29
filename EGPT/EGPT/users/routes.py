@@ -21,8 +21,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('users.register'))
-    return render_template('login.html', title='Register', form=form)
+        return redirect(url_for('users.login'))
+    return render_template('register.html', title='Register', form=form)
 
 
 @users.route("/login", methods=['GET', 'POST'])
@@ -53,22 +53,41 @@ def logout():
     return redirect(url_for('main.home'))
 
 
+# Route for user account page
 @users.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
     form = UpdateAccountForm()
     if form.validate_on_submit():
+        changes_made = False
         if form.picture.data:
+            if not form.picture.validate(form):
+                flash('Invalid file format. Only JPG and PNG images are allowed.', 'danger')
+                return redirect(url_for('users.account'))
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
-        current_user.username = form.username.data
-        current_user.email = form.email.data
-        db.session.commit()
-        flash('Your account has been updated!', 'success')
+            changes_made = True
+
+        if current_user.username != form.username.data:
+            current_user.username = form.username.data
+            changes_made = True
+
+        if current_user.email != form.email.data:
+            current_user.email = form.email.data
+            changes_made = True
+
+        if changes_made:
+            db.session.commit()
+            flash('Your account has been updated!', 'success')
+        else:
+            flash('No changes were made.', 'danger')
+        
         return redirect(url_for('users.account'))
+
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     total_emails = Messages.query.count()
     return render_template('account.html', title='Account',
