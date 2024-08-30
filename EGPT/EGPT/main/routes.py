@@ -42,7 +42,7 @@ def contact_us():
         form.first_name.data = current_user.first_name
         form.last_name.data = current_user.last_name
         form.email.data = current_user.email
-    return render_template('contact_us.html', title='Contact Us', form=form)
+    return render_template('contact.html', title='Contact Us', form=form)
 
 # Route for displaying a specific dictionary entry
 @main.route("/dictionary/<int:word_id>")
@@ -67,16 +67,9 @@ def dictionary():
 
 
 # Route for deleting a specific dictionary entry
-@main.route('/delete/<int:word_id>', methods=['GET', 'POST'])
-def delete_word(word_id):
-    word = Dictionary.query.get_or_404(word_id)
-    form = DeleteForm()
-    if form.validate_on_submit():
-        db.session.delete(word)
-        db.session.commit()
-        flash('Word deleted successfully', 'success')
-        return redirect(url_for('main.dictionary'))
-    return render_template('delete.html', word=word, form=form)
+@main.route('/learning', methods=['GET', 'POST'])
+def learning():
+    return render_template('learning.html')
 
 
 

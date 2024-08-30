@@ -1,26 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="answerDiv d-flex justify-content-between align-items-center">
-    <h1>{{ meaning["word"] }}</h1>
-    {% if meaning["audio"] %}
-        <button class="playButton d-flex justify-content-center align-items-center" onclick="new Audio('{{ meaning["audio"] }}').play()">
-            <i class="bi bi-play-fill playIcon"></i>
-        </button>
-    {% endif %}
-</div>
-<h6>{{ meaning["phonetic"] }}</h6>
-
-{% for definition in meaning["meanings"] %}
-    <div class="wordDiv">
-        <h3>{{ definition["part_name"] }}</h3>
-        <hr>
-        <h5>Meaning</h5>
-        <div class="listDiv">
-            <ul>
-                <li>{{ definition["definition"] }}</li>
-            </ul>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Your Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/meaning.css') }}">
+<div class="container">
+    <div class="answerDiv d-flex justify-content-between align-items-center animate__animated animate__fadeIn">
+        <div class="d-flex align-items-center">
+            <h1 class="wordTitle">{{ meaning["word"] }}</h1>
+            {% if meaning["audio"] %}
+                <button class="playButton d-flex justify-content-center align-items-center animate__animated animate__pulse animate__infinite" onclick="new Audio('{{ meaning["audio"] }}').play()">
+                    <i class="bi bi-play-fill playIcon"></i>
+                </button>
+            {% endif %}
         </div>
-        <h5>Synonyms: &nbsp;&nbsp;&nbsp;<span>{{ definition["synonym"] }}</span></h5>
     </div>
-{% endfor %}
+    <h6 class="phonetic text-center">{{ meaning["phonetic"] }}</h6>
+
+    {% for definition in meaning["meanings"] %}
+        <div class="wordDiv animate__animated animate__fadeInUp">
+            <h3 class="partOfSpeech">{{ definition["part_name"] }}</h3>
+            <hr>
+            <h5 class="sectionTitle">Meaning</h5>
+            <div class="listDiv">
+                <ul>
+                    <li class="definitionText">{{ definition["definition"] }}</li>
+                </ul>
+            </div>
+            <h5 class="synonymsTitle">Synonyms: &nbsp;&nbsp;&nbsp;<span class="synonyms">{{ definition["synonym"] }}</span></h5>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

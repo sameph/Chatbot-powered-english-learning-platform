@@ -23,11 +23,11 @@ body {
 }
 
 .auth-box {
-  display: flex;
+  width: 100%;
+  max-width: 500px;
   border-radius: 10px;
   overflow: hidden;
-  width: 100%;
-  max-width: 1200px;
+  background: var(--surface-color);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
@@ -36,30 +36,8 @@ body {
   transform: scale(1.02);
 }
 
-.auth-box-left, .auth-box-right {
-  flex: 1;
+.auth-box-content {
   padding: 30px;
-}
-
-.auth-box-left {
-  background: var(--surface-color);
-}
-
-.auth-box-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--background-color);
-}
-
-.auth-image {
-  max-width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease;
-}
-
-.auth-box-right:hover .auth-image {
-  opacity: 0.8;
 }
 
 .auth-title {
@@ -73,11 +51,6 @@ body {
 
 .auth-title:hover {
   color: var(--accent-color);
-}
-
-.form-row {
-  display: flex;
-  gap: 15px;
 }
 
 .form-group {

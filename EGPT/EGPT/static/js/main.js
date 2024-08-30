@@ -1,10 +1,3 @@
-/**
-* Template Name: eStartup
-* Template URL: https://bootstrapmade.com/estartup-bootstrap-landing-page-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function() {
   "use strict";
@@ -119,3 +112,54 @@
   });
 
 })();
+
+document.addEventListener("DOMContentLoaded", function() {
+  const chatbotContainer = document.getElementById("chatbot");
+  const chatbotToggle = document.getElementById("chatbot-toggle");
+  const chatbotClose = document.getElementById("chatbot-close");
+  const chatbotSend = document.getElementById("chatbot-send");
+  const chatbotInput = document.getElementById("chatbot-input");
+  const chatbotMessages = document.getElementById("chatbot-messages");
+
+  chatbotToggle.addEventListener("click", () => {
+    chatbotContainer.style.display = "flex";
+    chatbotToggle.classList.add("active");
+  });
+
+  chatbotClose.addEventListener("click", () => {
+    chatbotContainer.style.display = "none";
+    chatbotToggle.classList.remove("active");
+  });
+
+  chatbotSend.addEventListener("click", () => {
+    sendMessage();
+  });
+
+  chatbotInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  });
+
+  function sendMessage() {
+    const message = chatbotInput.value.trim();
+    if (message) {
+      const userMessage = document.createElement("div");
+      userMessage.classList.add("chatbot-message", "user-message");
+      userMessage.textContent = message;
+      chatbotMessages.appendChild(userMessage);
+
+      // Clear input field
+      chatbotInput.value = "";
+
+      // Simulate bot response (Replace with your backend call)
+      const botMessage = document.createElement("div");
+      botMessage.classList.add("chatbot-message", "bot-message");
+      botMessage.textContent = "This is a simulated bot response.";
+      chatbotMessages.appendChild(botMessage);
+
+      // Scroll to the bottom
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+  }
+});

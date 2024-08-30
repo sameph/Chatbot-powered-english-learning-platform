@@ -48,13 +48,13 @@
         <ul>
           <li><a href="{{url_for('main.home')}}" class="active">Home</a></li>
           <li><a href="{{url_for('main.about')}}">About</a></li>
-          <li><a href="#services">Learning</a></li>
+          <li><a href="{{url_for('main.learning')}}">Learning</a></li>
           <li><a href="{{url_for('main.dictionary')}}">Dictionary</a></li>
           <li><a href="{{url_for('main.contact_us')}}">Contact</a></li>
 
-          <li class="dropdown"><a href="#"><span>user</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>{{current_user.username}}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="{{ url_for('users.login') }}">Logout</a></li>
+              <li><a href="{{ url_for('users.register') }}">Logout</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -74,7 +74,7 @@
               <li><a href="#">Dropdown 4</a></li>
             </ul>
           </li>
-          <li><a href="{{ url_for('users.login') }}">Login/SignUp</a></li>
+          <li><a href="{{ url_for('users.register') }}">Login/SignUp</a></li>
 
 
         </ul>
@@ -86,28 +86,19 @@
 
 
  {% block content %}{% endblock %}
-
-<!-- <footer id="footer" class="footer light-background">
-
-<div class="container">
-  <div class="copyright text-center ">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename">eStartup</strong> <span>All Rights Reserved</span></p>
+ <div id="chatbot" class="chatbot-container">
+  <div class="chatbot-header">
+    <h5>Chat with us!</h5>
+    <button id="chatbot-close" class="chatbot-close">&times;</button>
   </div>
-  <div class="social-links d-flex justify-content-center">
-    <a href=""><i class="bi bi-twitter-x"></i></a>
-    <a href=""><i class="bi bi-facebook"></i></a>
-    <a href=""><i class="bi bi-instagram"></i></a>
-    <a href=""><i class="bi bi-linkedin"></i></a>
-  </div>
-  <div class="credits">
-    
-    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  <div id="chatbot-messages" class="chatbot-messages"></div>
+  <div class="chatbot-input-container">
+    <input id="chatbot-input" type="text" placeholder="Type your message...">
+    <button id="chatbot-send" class="chatbot-send">Send</button>
   </div>
 </div>
+<button id="chatbot-toggle" class="chatbot-toggle">Chat</button>
 
-</footer>
-
- -->
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

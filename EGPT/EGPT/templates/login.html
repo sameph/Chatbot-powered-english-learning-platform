@@ -1,112 +1,43 @@
-<html lang="en">
-<head>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-</head>
+{% extends 'layout.html' %}
 
-<body>
-<div id="form">
-  <div class="container">
-    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
-      <div id="userform">
-        <ul class="nav nav-tabs nav-justified" role="tablist">
-          <li class="active"><a href="#signup" role="tab" data-toggle="tab">Sign up</a></li>
-          <li><a href="#login" role="tab" data-toggle="tab">Log in</a></li>
-        </ul>
-        <div class="tab-content">
-          <!-- Sign Up Form -->
-          <div class="tab-pane fade active in" id="signup">
-            <h2 class="text-uppercase text-center">Sign Up for Free</h2>
-            <form method="POST" action="{{ url_for('users.register') }}">
-              {{ form.hidden_tag() }}
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <div class="form-group">
-                    {{ form.first_name.label }}
-                    {{ form.first_name(class="form-control") }}
-                    {% if form.first_name.errors %}
-                      <p class="help-block text-danger">{{ form.first_name.errors[0] }}</p>
-                    {% endif %}
-                  </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <div class="form-group">
-                    {{ form.last_name.label }}
-                    {{ form.last_name(class="form-control") }}
-                    {% if form.last_name.errors %}
-                      <p class="help-block text-danger">{{ form.last_name.errors[0] }}</p>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                {{ form.email.label }}
-                {{ form.email(class="form-control") }}
-                {% if form.email.errors %}
-                  <p class="help-block text-danger">{{ form.email.errors[0] }}</p>
-                {% endif %}
-              </div>
-              <div class="form-group">
-                {{ form.username.label }}
-                {{ form.username(class="form-control") }}
-                {% if form.username.errors %}
-                  <p class="help-block text-danger">{{ form.username.errors[0] }}</p>
-                {% endif %}
-              </div>
-              <div class="form-group">
-                {{ form.password.label }}
-                {{ form.password(class="form-control") }}
-                {% if form.password.errors %}
-                  <p class="help-block text-danger">{{ form.password.errors[0] }}</p>
-                {% endif %}
-              </div>
-              <div class="form-group">
-                {{ form.confirm_password.label }}
-                {{ form.confirm_password(class="form-control") }}
-                {% if form.confirm_password.errors %}
-                  <p class="help-block text-danger">{{ form.confirm_password.errors[0] }}</p>
-                {% endif %}
-              </div>
-              <div class="mrgn-30-top">
-                {{ form.submit(class="btn btn-larger btn-block", value="Sign Up") }}
-              </div>
-            </form>
-          </div>
+{% block content %}
+<link href="{{url_for('static', filename='styles.css')}}" rel="stylesheet">
 
-          <!-- Log In Form -->
-          <div class="tab-pane fade in" id="login">
-            <h2 class="text-uppercase text-center">Log in</h2>
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="auth-box-content">
+            <h2 class="auth-title">Login to Your Account</h2>
             <form method="POST" action="{{ url_for('users.login') }}">
-              {{ form.hidden_tag() }}
-              <div class="form-group">
-                {{ form.email.label }}
-                {{ form.email(class="form-control") }}
-                {% if form.email.errors %}
-                  <p class="help-block text-danger">{{ form.email.errors[0] }}</p>
-                {% endif %}
-              </div>
-              <div class="form-group">
-                {{ form.password.label }}
-                {{ form.password(class="form-control") }}
-                {% if form.password.errors %}
-                  <p class="help-block text-danger">{{ form.password.errors[0] }}</p>
-                {% endif %}
-              </div>
-              <div class="mrgn-30-top">
-                {{ form.submit(class="btn btn-larger btn-block", value="Log In") }}
-              </div>
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control") }}
+                    {% for error in form.email.errors %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control") }}
+                    {% for error in form.password.errors %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+
+                <p class="auth-footer-text">Don't have an account? <a href="{{ url_for('users.register') }}">Register</a></p>
             </form>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- /.container -->
 </div>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="{{ url_for('static', filename='js/login.js') }}"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}
