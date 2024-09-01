@@ -69,7 +69,15 @@ def dictionary():
 # Route for deleting a specific dictionary entry
 @main.route('/learning', methods=['GET', 'POST'])
 def learning():
-    return render_template('learning.html')
+    services = [
+        {'name': 'Vocabulary Mastery', 'description': 'Enhance your word knowledge.', 'progress': 70},
+        {'name': 'Grammar Essentials', 'description': 'Understand and apply grammar rules.', 'progress': 50},
+        {'name': 'Speaking Fluency', 'description': 'Improve your speaking skills.', 'progress': 40},
+        {'name': 'Listening Skills', 'description': 'Sharpen your listening abilities.', 'progress': 60},
+        {'name': 'Writing Proficiency', 'description': 'Develop your writing expertise.', 'progress': 30},
+        {'name': 'Reading Comprehension', 'description': 'Improve your reading skills.', 'progress': 80},
+    ]
+    return render_template('learning.html', services=services)
 
 
 
