@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+    <link href="{{url_for('static', filename='css/services.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7SztBmf0Rb/FK5gS5x5L6+MYdL4lTdZmt+h6M" crossorigin="anonymous">
+
+    <input type="checkbox" id="check">
+    <label class="button bars" for="check" id="open-sidebar"><i class="fas fa-bars">start</i></label>
+    
+    <div class="side_bar" id="sidebar">
+        <div class="title">
+            <div class="logo"><span>Explore</span> <span class="description-title">{{ service.name }}</span></div>
+            <label class="button cancel" id="close-sidebar"><i class="fas fa-times">x</i></label>
+        </div>
+        <ul>
+            {% for tutorial in tutorials %}
+                <li><a href="javascript:void(0)" onclick="loadVideo('{{ tutorial.video_url }}')"><i class="fas fa-book"></i>{{ tutorial.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Video player section -->
+    <div class="video-section">
+        <h2 id="video-title">Select a tutorial to watch the video</h2>
+        <iframe id="video-player" width="1060" height="700" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <script>
+      // Function to get CSRF token from meta tag
+      function getCSRFToken() {
+          return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      }
+  
+      function loadVideo(videoUrl, tutorialId) {
+          document.getElementById("video-player").src = videoUrl;
+          document.getElementById("video-title").innerText = "Now playing ";
+  
+          // Remove any previous event listeners to avoid multiple bindings
+          const videoPlayer = document.getElementById("video-player");
+          videoPlayer.removeEventListener('ended', videoEndListener);
+  
+          // Add a new event listener for when the video ends
+          function videoEndListener() {
+              // Make an AJAX request to mark the tutorial as viewed
+              fetch(`/mark_tutorial_viewed/${tutorialId}`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': getCSRFToken()  // Use the CSRF token from the meta tag
+                  },
+              }).then(response => response.json())
+                .then(data => {
+                    console.log(data.message);  // Optionally show a message or update UI
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+          }
+  
+          videoPlayer.addEventListener('ended', videoEndListener);
+      }
+  
+      function markAsViewed(tutorialId) {
+          const checkbox = document.getElementById(`tutorial-${tutorialId}`);
+          if (checkbox.checked) {
+              // Optionally handle the case where the checkbox is checked
+              // e.g., send an AJAX request to mark as viewed
+          }
+      }
+  
+      document.getElementById('close-sidebar').onclick = function() {
+          document.getElementById('sidebar').style.left = '-300px';
+          document.getElementById('open-sidebar').style.display = 'block';
+      }
+  
+      document.getElementById('open-sidebar').onclick = function() {
+          document.getElementById('sidebar').style.left = '0';
+          document.getElementById('open-sidebar').style.display = 'none';
+      }
+  </script>
+  
+</div>
+{% endblock content %}

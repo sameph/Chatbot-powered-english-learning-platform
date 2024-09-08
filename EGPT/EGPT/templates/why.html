@@ -41,3 +41,58 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(800);
   
 });
+
+
+
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<link href="{{url_for('static', filename='css/services.css')}}" rel="stylesheet">
+
+<section id="service-detail" class="service-detail section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div><span>Explore</span> <span class="description-title">{{ service.name }}</span></div>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <input type="checkbox" id="check">
+      <label class="button bars" for="check"><i class="fas fa-bars"></i></label>
+      <div class="side_bar">
+        <div class="title">
+          <div class="logo">Learning Hub</div>
+          <label class="button cancel" for="check"><i class="fas fa-times"></i></label>
+        </div>
+        <ul>
+          {% for tutorial in tutorials %}
+          <li><a href="#{{ tutorial.title | replace(' ', '_') }}"><i class="fas fa-book"></i>{{ tutorial.title }}</a></li>
+          {% endfor %}
+        </ul>
+        <div class="media_icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div><!-- End Sidebar -->
+
+      <!-- Main Content -->
+      <div class="col-lg-9 col-md-8" id="tutorial-content" data-aos="fade-left">
+        {% for tutorial in tutorials %}
+        <div class="tutorial-item" id="{{ tutorial.title | replace(' ', '_') }}">
+          <h3>{{ tutorial.title }}</h3>
+          <p>{{ tutorial.content }}</p>
+        </div>
+        {% endfor %}
+      </div><!-- End Main Content -->
+
+    </div>
+  </div>
+
+</section><!-- /Service Detail Section -->
+
+{% endblock content %}

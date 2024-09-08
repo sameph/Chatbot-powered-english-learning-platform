@@ -16,32 +16,27 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    is_admin = db.Column(db.Boolean, default=False)
-    translation_history = db.relationship('TranslationHistory', backref='user', lazy=True)
-    messages = db.relationship('Messages', backref='user', lazy=True)
-
-    def get_reset_token(self, expires_sec=1800):
-        s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
-        return s.dumps({'user_id': self.id}).decode('utf-8')
-
-    @staticmethod
-    def verify_reset_token(token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            user_id = s.loads(token)['user_id']
-        except:
-            return None
-        return User.query.get(user_id)
+    progress = db.relationship('UserProgress', backref='user', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-    
-class TranslationHistory(db.Model):
+
+
+class UserProgress(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    translated_text = db.Column(db.Text, nullable=False)
-    video_urls = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    tutorial_id = db.Column(db.Integer, db.ForeignKey('tutorial.id'), nullable=False)
+    is_viewed = db.Column(db.Boolean, default=False)
+
+    def __repr__(self):
+        return f"UserProgress(User ID: {self.user_id}, Tutorial ID: {self.tutorial_id}, Viewed: {self.is_viewed})"
+
+
+class Tutorial(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    video_url = db.Column(db.String(255), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('service.id'), nullable=False)
     
 class Dictionary(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -152,14 +152,27 @@ document.addEventListener("DOMContentLoaded", function() {
       // Clear input field
       chatbotInput.value = "";
 
-      // Simulate bot response (Replace with your backend call)
-      const botMessage = document.createElement("div");
-      botMessage.classList.add("chatbot-message", "bot-message");
-      botMessage.textContent = "This is a simulated bot response.";
-      chatbotMessages.appendChild(botMessage);
+      // Send the message to the Flask backend
+      fetch('/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: message })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("chatbot-message", "bot-message");
+        botMessage.textContent = data.response;
+        chatbotMessages.appendChild(botMessage);
 
-      // Scroll to the bottom
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        // Scroll to the bottom
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
     }
   }
 });

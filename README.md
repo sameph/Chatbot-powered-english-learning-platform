@@ -1,6 +1,6 @@
 # Chatbot powered english learning 
 
-  This is a a leaning website built using flask web framework and it has a chatbot feature to communicate with ai in real time.
+  This is a leaning website built using flask web framework and it has a chatbot feature to communicate with ai in real time.
 
 ## Requirements
 

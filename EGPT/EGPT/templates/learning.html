@@ -1,8 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
-<!-- Services Section -->
+<link href="{{url_for('static', filename='css/services.css')}}" rel="stylesheet">
 <section id="services" class="services section">
 
   <!-- Section Title -->
@@ -11,28 +10,26 @@
   </div><!-- End Section Title -->
 
   <div class="container">
-
     <div class="row gy-4">
       {% for service in services %}
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
         <div class="service-item position-relative">
-          <div class="icon">
-            <i class="bi bi-activity"></i> <!-- You can change icons based on the service name or other criteria -->
-          </div>
-          <a href="#" class="stretched-link">
-            <h3>{{ service.name }}</h3>
-          </a>
-          <p>{{ service.description }}</p>
-          <div class="progress mt-3">
-            <div class="progress-bar" role="progressbar" style="width: {{ service.progress }}%;" aria-valuenow="{{ service.progress }}" aria-valuemin="0" aria-valuemax="100">{{ service.progress }}%</div>
-          </div>
+            <div class="icon">
+                <i class="bi bi-activity"></i>
+            </div>
+            <a href="{{ url_for('main.service_detail', service_name=service.name.replace(' ', '_')) }}" class="stretched-link">
+                <h3>{{ service.name }}</h3>
+            </a>
+            <p>{{ service.description }}</p>
+            <div class="progress mt-3">
+                <div class="progress-bar" role="progressbar" style="width: {{ service.progress }}%;" aria-valuenow="{{ service.progress }}" aria-valuemin="0" aria-valuemax="100">{{ service.progress }}%</div>
+            </div>
         </div>
-      </div><!-- End Service Item -->
-      {% endfor %}
     </div>
+{% endfor %}
 
+    </div>
   </div>
 
-</section><!-- /Services Section -->
-
+</section>
 {% endblock content %}
