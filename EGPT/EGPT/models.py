@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     progress = db.relationship('UserProgress', backref='user', lazy=True)
+    messages = db.relationship('Messages', backref='user', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
@@ -37,7 +38,22 @@ class Tutorial(db.Model):
     title = db.Column(db.String(100), nullable=False)
     video_url = db.Column(db.String(255), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('service.id'), nullable=False)
-    
+    user_progress = db.relationship('UserProgress', backref='tutorial', lazy=True)
+
+    def __repr__(self):
+        return f"Tutorial('{self.title}', '{self.video_url}')"
+
+
+class Service(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    tutorials = db.relationship('Tutorial', backref='service', lazy=True)
+
+    def __repr__(self):
+        return f"Service('{self.name}')"
+
+
 class Dictionary(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String(40), unique=True, nullable=False)
