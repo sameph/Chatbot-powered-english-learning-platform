@@ -4,8 +4,9 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from EGPT.config import Config
+from flask_migrate import Migrate
 import os
-
+import torch
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -13,8 +14,9 @@ login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
 mail = Mail()
+migrate = Migrate()
 
-
+# A function to create the app
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -23,16 +25,14 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
+    migrate.init_app(app, db)
 
     from EGPT.users.routes import users
     from EGPT.errors.handlers import errors
     from EGPT.main.routes import main
-    # from EGPT.admin.routes import admin
+    
     app.register_blueprint(users)
     app.register_blueprint(main)
     app.register_blueprint(errors)
-    # app.register_blueprint(admin)
-    # with app.app_context():
-    #     app.fasttext_model = FastText.load(os.path.join(app.root_path, 'static', 'fasttext.model'))
 
     return app

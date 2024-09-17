@@ -1,6 +1,5 @@
 import requests
 
-
 class DictionaryClass:
     def __init__(self):
         self.my_api = "https://api.dictionaryapi.dev/api/v2/entries/en/"
@@ -62,3 +61,5 @@ class DictionaryClass:
             return answer
         except KeyError:
             return self.help_data
+    
+

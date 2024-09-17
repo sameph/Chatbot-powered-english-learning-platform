@@ -1,0 +1,412 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good afternoon",
+        "How's it going?",
+        "Is anyone there?",
+        "Good day",
+        "What's up?"
+      ],
+      "responses": [
+        "Hello! How can I assist you?",
+        "Hey there!",
+        "Hi! How are you today?",
+        "Good to see you! What would you like to learn?",
+        "Hey! Need help with something?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Talk to you soon",
+        "Catch you later",
+        "I'm leaving",
+        "See ya"
+      ],
+      "responses": [
+        "Goodbye! Have a great day!",
+        "See you soon!",
+        "Bye! Keep practicing!",
+        "Take care, come back anytime!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "I appreciate it",
+        "Thanks a lot",
+        "Much appreciated",
+        "You're so helpful",
+        "That's helpful"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "No problem!",
+        "I'm glad I could help!",
+        "Anytime, keep up the good work!"
+      ]
+    },
+    {
+      "tag": "learning_progress",
+      "patterns": [
+        "How is my progress?",
+        "Am I improving?",
+        "How well am I doing?",
+        "What is my current level?",
+        "How much have I learned?"
+      ],
+      "responses": [
+        "You're doing great! Keep practicing and you'll see improvement.",
+        "You've made great progress! Keep it up!",
+        "Your learning journey is going well. Stay motivated!"
+      ]
+    },
+    {
+      "tag": "motivation",
+      "patterns": [
+        "I'm tired",
+        "Learning is hard",
+        "I want to give up",
+        "I need motivation",
+        "Why is this so difficult?",
+        "Help me stay motivated"
+      ],
+      "responses": [
+        "Learning can be tough, but you're doing amazing!",
+        "Don't give up! You're closer to success than you think.",
+        "Keep pushing! You can achieve your goals!",
+        "Every step forward is progress. You’ve got this!"
+      ]
+    },
+    {
+      "tag": "grammar_help",
+      "patterns": [
+        "Can you help me with grammar?",
+        "What's the rule for past tense?",
+        "How do I form a question?",
+        "What are modal verbs?",
+        "Explain present perfect"
+      ],
+      "responses": [
+        "I'd be happy to help with grammar! Let's break it down together.",
+        "To form the past tense, just add '-ed' for regular verbs, but be careful with irregulars!",
+        "Modal verbs include can, could, should, and would. They help express ability or possibility.",
+        "Present perfect connects the past with the present: 'I have done something'."
+      ]
+    },
+    {
+      "tag": "vocabulary_help",
+      "patterns": [
+        "Can you teach me new words?",
+        "Help me with vocabulary",
+        "How do I improve my vocabulary?",
+        "Give me a word to learn",
+        "What's a synonym for happy?",
+        "Tell me some useful phrases"
+      ],
+      "responses": [
+        "Of course! Let’s start with the word 'elated' — it means extremely happy!",
+        "To improve vocabulary, try learning one new word each day.",
+        "Here's a synonym for 'happy' — 'joyful'.",
+        "Try learning phrases like 'on cloud nine' to describe happiness!"
+      ]
+    },
+    {
+      "tag": "listening_help",
+      "patterns": [
+        "How can I improve my listening skills?",
+        "I need help with listening",
+        "What are some listening exercises?",
+        "How do I understand spoken English better?"
+      ],
+      "responses": [
+        "Listening to podcasts or watching videos in English can really help.",
+        "Try focusing on key words while listening. It can improve your comprehension.",
+        "You can start with simple audio recordings and gradually move to more complex conversations."
+      ]
+    },
+    {
+      "tag": "speaking_help",
+      "patterns": [
+        "How can I improve my speaking?",
+        "I want to speak better English",
+        "Help me with pronunciation",
+        "Can you give me tips for speaking?"
+      ],
+      "responses": [
+        "Practice speaking with a friend or even yourself. It helps improve fluency!",
+        "Try repeating after native speakers from podcasts or videos.",
+        "Focus on clarity over speed. Speaking slowly and clearly helps you sound more confident."
+      ]
+    },
+    {
+      "tag": "common_phrases",
+      "patterns": [
+        "Teach me common English phrases",
+        "What are some useful daily expressions?",
+        "Can you give me useful phrases?",
+        "What do people say in everyday conversations?"
+      ],
+      "responses": [
+        "Here are some common phrases: 'How’s it going?', 'What’s up?', 'Long time no see!'",
+        "For expressing gratitude: 'Thanks a lot!' or 'I really appreciate it!'",
+        "You can use 'I’m just browsing' when shopping or 'Could you give me a hand?' when you need help."
+      ]
+    },
+    {
+      "tag": "error_handling",
+      "patterns": [
+        "I made a mistake",
+        "How do I correct errors?",
+        "What should I do when I make a mistake?",
+        "I don’t understand something"
+      ],
+      "responses": [
+        "Mistakes are part of learning. It's okay to make them!",
+        "When you make an error, take note of it and try to understand why it happened.",
+        "Don't worry, practice makes perfect! Keep trying."
+      ]
+    },
+    {
+      "tag": "english_courses",
+      "patterns": [
+        "Do you offer any courses?",
+        "Can I sign up for a class?",
+        "What learning programs do you have?",
+        "How can I enroll in an English course?"
+      ],
+      "responses": [
+        "Yes, we offer various courses for different levels. You can check them on our website!",
+        "You can enroll in beginner, intermediate, or advanced classes depending on your level.",
+        "To sign up, just visit our courses page and choose the best option for you."
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke",
+        "Do you know something funny?",
+        "Say something to make me laugh"
+      ],
+      "responses": [
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "I used to be a baker, but I couldn’t make enough dough.",
+        "What do you call fake spaghetti? An impasta !"
+      ]
+    },
+    {
+      "tag": "quiz",
+      "patterns": [
+        "Give me a quiz",
+        "Do you have any quizzes?",
+        "Can I take a test?",
+        "Test my English skills"
+      ],
+      "responses": [
+        "Sure! Here’s a quick question: What’s the past tense of 'go'?",
+        "Let's start a quiz! How do you say 'thank you' in formal English?",
+        "Try this: What’s the plural of 'child'?"
+      ]
+    },
+    {
+      "tag": "introduction",
+      "patterns": [
+        "What's your name?",
+        "Who are you?",
+        "What can you do?"
+      ],
+      "responses": [
+        "I'm an English language assistant, here to help you with your language skills!",
+        "I'm a chatbot designed to assist with English language learning and practice.",
+        "I can help with grammar, vocabulary, listening, speaking, and more!"
+      ]
+    },
+    {
+      "tag": "small_talk",
+      "patterns": [
+        "How's the weather?",
+        "What's your favorite food?",
+        "Do you like sports?"
+      ],
+      "responses": [
+        "The weather is always sunny in the world of language learning!",
+        "I don't have personal preferences, but I can tell you about different types of food!",
+        "I'm not into sports, but I can help you with sports-related vocabulary and phrases!"
+      ]
+    },
+    {
+      "tag": "apologize",
+      "patterns": [
+        "Sorry",
+        "I apologize",
+        "Excuse me",
+        "My apologies"
+      ],
+      "responses": [
+        "No need to apologize! We're here to learn and make mistakes together.",
+        "It's okay, mistakes happen! Let's move forward and learn from them.",
+        "Don't worry about it! We're all in this together."
+      ]
+    },
+    {
+      "tag": "compliment",
+      "patterns": [
+        "You're so helpful",
+        "I love this chatbot",
+        "You're amazing",
+        "This is the best language learning tool"
+      ],
+      "responses": [
+        "Aww, thank you so much! I'm happy to help you with your English skills.",
+        "I'm glad you're enjoying our conversation! I'm here to assist you in any way I can.",
+        "You're too kind! I'm just happy to be a part of your language learning journey."
+      ]
+    },
+    {
+      "tag": "request",
+      "patterns": [
+        "Can you help me with something?",
+        "I need assistance with",
+        "Can you explain",
+        "Can you give me an example"
+      ],
+      "responses": [
+        "Of course! I'd be happy to help you with that.",
+        "What do you need help with? I'm here to assist you.",
+        "Let me explain that in a way that's easy to understand.",
+        "Here's an example to help illustrate the concept."
+      ]
+    },
+    {
+      "tag": "clarify",
+      "patterns": [
+        "What do you mean?",
+        "Can you clarify",
+        "I don't understand",
+        "Can you explain it again"
+      ],
+      "responses": [
+        "Let me try to explain it in a different way.",
+        "I'd be happy to clarify that for you!",
+        "Don't worry, it's okay if you didn't understand. Let me try again.",
+        "Let me break it down step by step so it's easier to understand."
+      ]
+    },
+    {
+      "tag": "encourage",
+      "patterns": [
+        "You're doing great",
+        "Keep it up",
+        "I'm proud of you",
+        "You're making progress"
+      ],
+      "responses": [
+        "Thank you! You're doing great too!",
+        "I'm glad to see you're motivated! Keep pushing forward.",
+        "Aww, thank you for the kind words! You're doing amazing.",
+        "That's the spirit! You're making great progress, keep it up!"
+      ]
+    },
+    {
+      "tag": "time",
+      "patterns": [
+        "What's the time?",
+        "Can you tell me the time?",
+        "What time is it?"
+      ],
+      "responses": [
+        "I'm not sure about the exact time, but time flies when you're having fun!",
+        "Check your device clock, time waits for no one!"
+      ]
+    },
+    {
+      "tag": "day",
+      "patterns": [
+        "What's the day today?",
+        "Can you tell me today's date?",
+        "What day is it?"
+      ],
+      "responses": [
+        "It's always a good day! But please check your calendar for the exact date.",
+        "Let me think... oh wait, it's today!"
+      ]
+    },
+    {
+        "tag": "affirmation",
+        "patterns": [
+          "Yes",
+          "Yeah",
+          "Sure",
+          "Of course",
+          "Definitely",
+          "Absolutely"
+        ],
+        "responses": [
+          "Great!",
+          "Good to hear!",
+          "Awesome!",
+          "Glad we're on the same page!"
+        ]
+      },
+      {
+        "tag": "denial",
+        "patterns": [
+          "No",
+          "Nope",
+          "Not really",
+          "I don't think so",
+          "Nah"
+        ],
+        "responses": [
+          "No worries!",
+          "That's okay!",
+          "Alright, feel free to ask anything else!",
+          "Let me know if you change your mind."
+        ]
+      },
+      {
+        "tag": "personal_questions",
+        "patterns": [
+          "What's your name?",
+          "Who are you?",
+          "What can I call you?",
+          "How old are you?",
+          "Where are you from?",
+          "What are you?"
+        ],
+        "responses": [
+          "I'm your friendly assistant chatbot!",
+          "You can call me ChatBot.",
+          "I'm just here to help you with your questions.",
+          "I live in the digital world, so age is just a number for me!"
+        ]
+      },
+    {
+      "tag": "empathy",
+      "patterns": [
+        "I'm feeling frustrated",
+        "I'm so tired",
+        "I don't know if I can do this",
+        "I'm feeling overwhelmed"
+      ],
+      "responses": [
+        "I totally understand. It's normal to feel frustrated when learning a new language.",
+        "I'm here to help you, and we can take it one step at a time. You got this!",
+        "Don't worry, you're not alone. We all feel that way sometimes. Let's break it down together.",
+        "Take a deep breath and let's tackle this together. You're stronger than you think!"
+      ]
+    }
+  ]
+}

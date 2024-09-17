@@ -50,34 +50,33 @@
         <ul>
           <li><a href="{{url_for('main.home')}}" class="active">Home</a></li>
           <li><a href="{{url_for('main.about')}}">About</a></li>
-          <li><a href="{{url_for('main.learning')}}">Learning</a></li>
+          {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('main.learning')}}">Learning</a></li>
+          {%endif %}
           <li><a href="{{url_for('main.dictionary')}}">Dictionary</a></li>
           <li><a href="{{url_for('main.contact_us')}}">Contact</a></li>
-
-          <li class="dropdown"><a href="#"><span>{{current_user.username}}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          {% if current_user.is_authenticated %}
+          <li class="dropdown"><a href="#"><span> {{current_user.username}}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="{{ url_for('users.register') }}">Logout</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li><a href="{{url_for('users.logout')}}">logout</a></li>
+              <li class="dropdown"><a href="#"><span>Learning</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
+                  <li><a href="{{ url_for('main.service_detail', service_name='Vocabulary Mastery'.replace(' ', '_'))}}">Vocabulary Mastery</a></li>
+                  <li><a href="{{ url_for('main.service_detail', service_name='Grammar Essentials'.replace(' ', '_'))}}">Grammar Essentials</a></li>
+                  <li><a href="{{ url_for('main.service_detail', service_name='Speaking Fluency'.replace(' ', '_'))}}">Speaking Fluency</a></li>
+                  <li><a href="{{ url_for('main.service_detail', service_name='Listening Skills'.replace(' ', '_'))}}">Listening Skills</a></li>
+                  <li><a href="{{ url_for('main.service_detail', service_name='Writing Proficiency'.replace(' ', '_'))}}">Writing Proficiency</a></li>
+                  <li><a href="{{ url_for('main.service_detail', service_name='Reading Comprehension'.replace(' ', '_'))}}">Reading Comprehension</a></li>
                 </ul>
               </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="{{url_for('users.account')}}">My profile</a></li>
+              <!-- <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li> -->
             </ul>
           </li>
-          <li><a href="{{ url_for('users.register') }}">Login/SignUp</a></li>
-
+          {%else:%}
+            <li><a href="{{ url_for('users.register') }}">Login/SignUp</a></li>
+          {%endif%}
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -85,21 +84,41 @@
 
     </div>
   </header>
-
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <small class="alert alert-{{ category }}" style="top: 100px;">
+            {{ message }}
+          </small>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
  {% block content %}{% endblock %}
- <div id="chatbot" class="chatbot-container">
-  <div class="chatbot-header">
-    <h5>Chat with us!</h5>
-    <button id="chatbot-close" class="chatbot-close">&times;</button>
+ <div class="chatbox">
+  <div class="chatbox__support">
+      <div class="chatbox__header">
+          <div class="chatbox__image--header">
+              <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+          </div>
+          <div class="chatbox__content--header">
+              <h4 class="chatbox__heading--header">Chat support</h4>
+              <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
+          </div>
+      </div>
+      <div class="chatbox__messages">
+          <div></div>
+      </div>
+      <div class="chatbox__footer">
+          <input type="text" placeholder="Write a message...">
+          <button class="chatbox__send--footer send__button">Send</button>
+      </div>
   </div>
-  <div id="chatbot-messages" class="chatbot-messages"></div>
-  <div class="chatbot-input-container">
-    <input id="chatbot-input" type="text" placeholder="Type your message...">
-    <button id="chatbot-send" class="chatbot-send">Send</button>
+  <div class="chatbox__button">
+      <button><img src="{{ url_for('static', filename='img/chatbox-icon.svg') }}" /></button>
   </div>
 </div>
-<button id="chatbot-toggle" class="chatbot-toggle">Chat</button>
 
 <!-- Scroll Top -->
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -115,6 +134,11 @@
 
 <!-- Main JS File -->
 <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</main>
+
+<script>
+</script>
+
 
 </body>
 

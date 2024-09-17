@@ -1,6 +1,7 @@
 # Chatbot powered english learning 
 
-  This is a leaning website built using flask web framework and it has a chatbot feature to communicate with ai in real time.
+  This is a leaning website built using flask web framework and it has a chatbot feature to communicate with ai in real time. Anyone can start using without 
+  authentication, but requires authentication to start the tutorial.
 
 ## Requirements
 
@@ -19,6 +20,10 @@
     - git clone git@github.com:sameph/Chatbot-powered-english-learning-platform.git
     - install the requirements
     - start testing
+
+## 🧑‍💻 Author
+
+- **Samuel Ephrem** - [GitHub](https://github.com/sameph) | [LinkedIn](https://linkedin.com/in/sam-eph)
 
 ## Demo
 

@@ -1,5 +1,4 @@
 from datetime import datetime
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 from EGPT import db, login_manager
 from flask_login import UserMixin
@@ -28,6 +27,7 @@ class UserProgress(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     tutorial_id = db.Column(db.Integer, db.ForeignKey('tutorial.id'), nullable=False)
     is_viewed = db.Column(db.Boolean, default=False)
+    completion_date = db.Column(db.DateTime, nullable=True)
 
     def __repr__(self):
         return f"UserProgress(User ID: {self.user_id}, Tutorial ID: {self.tutorial_id}, Viewed: {self.is_viewed})"
@@ -59,7 +59,7 @@ class Dictionary(db.Model):
     word = db.Column(db.String(40), unique=True, nullable=False)
 
     def __repr__(self):
-        return f"word('{self.word}', '{self.sign_video}')"
+        return f"word('{self.word}')"
     
 
 class Messages(db.Model):

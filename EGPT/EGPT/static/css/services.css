@@ -63,6 +63,10 @@
     color: var(--accent-color);
   }
 }
+.progress-bar {
+  transition: width 0.5s ease-in-out;
+}
+
 
 /*----------------------------------------------------------------
 # Side Bar service details
@@ -179,45 +183,21 @@ label {
   }
 }
 
-/* Custom checkbox style */
-.custom-checkbox {
-  position: absolute;
-  opacity: 0;
+.side_bar ul a.active {
+  background-color: #31344b;
+  color: #ffffff;
 }
 
-.custom-checkbox + label {
-  position: relative;
-  padding-left: 30px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.custom-checkbox + label:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  border: 2px solid #4CAF50;
-  border-radius: 4px;
-  background-color: transparent;
-  transition: background-color 0.3s;
-}
-
-.custom-checkbox:checked + label:before {
-  background-color: #4CAF50;
-}
-
-.custom-checkbox:checked + label:after {
-  content: '\f00c';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-  color: white;
+@media (max-width: 768px) {
+  .side_bar {
+      position: fixed;
+      left: -300px; /* Hidden by default */
+      transition: left 0.3s ease;
+  }
+  .side_bar.open {
+      left: 0;
+  }
+  .video-section {
+      margin-left: 0; /* Full width video section */
+  }
 }
