@@ -379,7 +379,6 @@
       {
         "tag": "personal_questions",
         "patterns": [
-          "What's your name?",
           "Who are you?",
           "What can I call you?",
           "How old are you?",

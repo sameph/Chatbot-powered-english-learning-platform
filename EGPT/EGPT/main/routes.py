@@ -5,7 +5,7 @@ from EGPT.main.forms import DeleteForm, ContactForm
 from EGPT import db
 import datetime
 from EGPT.main.utils import DictionaryClass
-from flask import current_app
+from new.chat import get_response
 
 main = Blueprint('main', __name__)
 
@@ -101,4 +101,23 @@ def mark_tutorial_viewed(tutorial_id):
     # Optionally return the updated progress percentage
     return jsonify({'message': 'Tutorial marked as viewed successfully'}), 200
 
+@main.post("/chat") 
+def chat():
+    try:
+        text = request.json['message']
+        response = get_response(text)
+        message = {"answer": response}
+        return jsonify(message)
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"answer": "Something went wrong"}), 500
+    
+
+@main.route("/admin")
+@login_required
+def admin():
+    if current_user.is_admin:
+        return render_template('admin.html')
+    else:
+        abort(403)
 

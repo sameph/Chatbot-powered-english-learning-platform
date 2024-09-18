@@ -1,88 +1,86 @@
 .dict_container {
   font-family: 'Open Sans', sans-serif;
-  max-width: 800px;
+  max-width: 1000px; /* Increased the width */
   margin: 0px auto;
-  padding: 20px;
+  padding: 40px; /* More padding for spacing */
   background: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow for a more defined card */
   transition: background-color 0.3s, box-shadow 0.3s;
+  font-size: 18px; /* Increased font size */
 }
+
 #searchBox {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 15px; /* Larger input area */
+  margin-bottom: 30px;
   background: #8ad7d7;
   color: #1c1b1b;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 6px; /* Slightly rounder corners */
+  font-size: 18px; /* Larger font for input */
 }
+
 #wordList {
-  max-height: 400px;
+  max-height: 500px; /* Increased height for better view */
   overflow-y: auto;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  border-radius: 6px;
+  margin-bottom: 30px;
 }
+
 .dict_container ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .dict_container ul li {
-  padding: 10px;
+  padding: 15px; /* Larger padding for list items */
   background: #fff;
   cursor: pointer;
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
 }
+
 .dict_container ul li:hover {
-  background: #f9f9f9;
+  background: #f1f1f1; /* Lighter hover background */
+  transform: scale(1.02); /* Slight zoom on hover */
 }
+
 .delete-btn {
   background: #ff4d4d;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 10px 15px; /* Larger buttons */
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
+
 .delete-btn:hover {
   background: #cc0000;
+  transform: scale(1.05); /* Button grows slightly on hover */
 }
+
 .definition {
   background: #fff;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 30px; /* More padding for better readability */
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: none;
+  font-size: 18px; /* Increased text size for clarity */
   transition: all 0.3s;
 }
-.delete-confirm-btn {
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 10px;
+
+.delete-confirm-btn, .delete-cancel-btn {
+  font-size: 16px; /* Larger button text */
+  padding: 12px 25px; /* Increased padding for buttons */
 }
-.delete-confirm-btn:hover {
-  background: #cc0000;
-}
-.delete-cancel-btn {
-  background: #d9dddd;
-  color: #0e0c0c;
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-.delete-cancel-btn:hover {
-  background: #b3b3b3;
+
+.delete-confirm-btn:hover, .delete-cancel-btn:hover {
+  transform: scale(1.05); /* Slight hover effect for both confirm and cancel buttons */
 }
