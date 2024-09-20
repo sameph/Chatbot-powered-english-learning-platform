@@ -62,7 +62,7 @@ def account():
                 flash('Invalid file format. Only JPG and PNG images are allowed.', 'danger')
                 return redirect(url_for('users.account'))
             picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+            current_user.image_file = picture_file 
             changes_made = True
 
         if current_user.username != form.username.data:
@@ -89,6 +89,15 @@ def account():
     total_emails = Messages.query.count()
     return render_template('account.html', title='Account',
                            image_file=image_file, form=form, total_emails=total_emails)
+
+@users.route("/delete_account", methods=['POST'])
+@login_required
+def delete_account():
+    user = current_user
+    db.session.delete(user)
+    db.session.commit()
+    flash('Your account has been deleted.', 'success')
+    return redirect(url_for('main.home'))
 
 @users.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():

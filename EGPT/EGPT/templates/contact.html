@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 <!-- Contact Section -->
 <section id="contact" class="contact section">
 
@@ -46,31 +45,28 @@
       </div>
 
       <div class="col-lg-8">
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+        <form action="{{ url_for('main.contact_us') }}" method="post" data-aos="fade-up" data-aos-delay="200">
+          {{ form.hidden_tag() }}
           <div class="row gy-4">
 
             <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+              {{ form.name(class="form-control", placeholder="Your Name", required="") }}
             </div>
 
             <div class="col-md-6 ">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+              {{ form.email(class="form-control", placeholder="Your Email", required="") }}
             </div>
 
             <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+              {{ form.subject(class="form-control", placeholder="Subject", required="") }}
             </div>
 
             <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+              {{ form.message(class="form-control", rows="6", placeholder="Message", required="") }}
             </div>
 
             <div class="col-md-12 text-center">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-
-              <button type="submit">Send Message</button>
+              {{ form.submit(class="btn btn-primary") }}
             </div>
 
           </div>

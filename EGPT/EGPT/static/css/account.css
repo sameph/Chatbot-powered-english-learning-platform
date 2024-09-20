@@ -1,65 +1,23 @@
-/* account.css */
-.profile-container {
-  background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  overflow: hidden;
-  width: 700px;
-  margin: 50px auto;
-  max-width: 100%;
-  animation: fadeIn 1s ease-in-out;
-  transition: transform 0.3s ease;
-}
+/* Add some basic styling to the account page */
 
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-.profile-container:hover {
-  transform: translateY(-10px);
-}
-
-.profile-header {
-  background: linear-gradient(135deg, #8ad7d7, #48c6ef);
-  color: #fff;
-  text-align: center;
-  padding: 30px;
-  border-radius: 20px 20px 0 0;
-}
-
-.profile-content {
-  display: flex;
-  flex-direction: column;
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
   padding: 20px;
-  gap: 20px;
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .profile-content {
-      flex-direction: row;
-      padding: 20px;
-      gap: 20px;
-      align-items: center;
-  }
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .profile-picture {
   text-align: center;
-  position: relative;
+  margin-bottom: 20px;
 }
 
 .profile-picture img {
   border-radius: 50%;
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
@@ -68,10 +26,6 @@
 
 .profile-picture img:hover {
   transform: scale(1.05);
-}
-
-.profile-picture input[type="file"] {
-  display: none;
 }
 
 .upload-button {
@@ -95,15 +49,7 @@
 }
 
 .profile-details {
-  width: 100%;
-  padding-left: 20px;
-}
-
-@media (min-width: 768px) {
-  .profile-details {
-      flex: 2;
-      padding-left: 20px;
-  }
+  padding: 20px;
 }
 
 .input-group {
@@ -160,90 +106,25 @@ button:hover,
   background-color: #269797;
 }
 
-.profile-progress {
+.delete-account {
   margin-top: 20px;
-  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.profile-progress h2 {
-  margin-bottom: 10px;
-}
-
-.progress-bar-container {
-  background-color: #f0f0f0;
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
   border-radius: 25px;
-  overflow: hidden;
-  height: 30px;
-  margin: 0 auto;
-  width: 80%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.progress-bar {
-  background-color: #6c63ff;
-  height: 100%;
-  width: 0;
-  transition: width 0.3s;
-}
-
-/* Responsive adjustments */
-@media (max-width: 767px) {
-  .profile-content {
-      flex-direction: column;
-      padding: 20px;
-      gap: 20px;
-  }
-
-  .profile-details {
-      padding-left: 0;
-  }
-
-  .upload-button {
-      font-size: 12px;
-      padding: 8px 16px;
-  }
-
-  .input-group input,
-  .input-group .profile-form-control-file {
-      font-size: 12px;
-  }
-
-  button,
-  .profile-btn {
-      padding: 10px 20px;
-      font-size: 14px;
-  }
-}
-
-/* Error display */
-
-/* Error Message Styles */
-.text-danger {
-  color: #dc3545; /* Bootstrap default color for danger */
-  font-size: 0.875em; /* Slightly smaller font size for error messages */
-}
-
-/* Invalid Input Styles */
-.is-invalid {
-  border-color: #dc3545; /* Red border for invalid inputs */
-  background-image: none; /* Remove any background image */
-}
-
-/* Invalid Feedback Styles */
-.invalid-feedback {
-  display: block; /* Ensure the feedback is visible */
-  width: 100%; /* Full width */
-  margin-top: 0.25rem; /* Space above the feedback message */
-  font-size: 0.875em; /* Match the error message font size */
-  color: #dc3545; /* Red color for the feedback text */
-}
-
-/* Input Group Adjustments for Error Display */
-.input-group .profile-form-control.is-invalid {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Optional: Bootstrap style box shadow for invalid inputs */
-}
-
-/* Adjustments for error icon inside input fields (if needed) */
-.input-group .profile-form-control.is-invalid + i {
-  color: #dc3545; 
+.delete-btn:hover {
+  background-color: #c82333;
 }

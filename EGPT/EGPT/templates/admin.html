@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+<section class="messages">
+  <h2>Messages</h2>
+  <div class="message-list">
+      {% for message in messages %}
+      <div class="message-item">
+          <div class="message-header">
+              <h3>Subject: {{ message.subject }}</h3>
+              <span class="timestamp">{{ message.timestamp.strftime('%Y-%m-%d %H:%M') }}</span>
+          </div>
+          <p class="message-content">{{ message.message }}</p>
+          <div class="message-footer">
+              <span class="user-id">User ID: {{ message.user_id }}</span>
+              <form action="{{ url_for('main.delete_message', message_id=message.id) }}" method="post">
+                  <button type="submit" class="delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>
+              </form>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}

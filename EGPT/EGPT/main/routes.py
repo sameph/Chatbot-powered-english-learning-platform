@@ -113,11 +113,20 @@ def chat():
         return jsonify({"answer": "Something went wrong"}), 500
     
 
-@main.route("/admin")
+@main.route("/admin/messages")
 @login_required
-def admin():
+def admin_messages():
+    messages = Messages.query.all()
     if current_user.is_admin:
-        return render_template('admin.html')
+        return render_template('admin.html', messages = messages)
     else:
         abort(403)
 
+@main.route("/delete_message/<int:message_id>", methods=['POST'])
+@login_required
+def delete_message(message_id):
+    message = Messages.query.get_or_404(message_id)
+    db.session.delete(message)
+    db.session.commit()
+    flash('Message has been deleted!', 'success')
+    return redirect(url_for('main.admin_messages'))

@@ -1,67 +1,71 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <main>
-<div>
-    <div class="profile-container">
-        <div class="profile-header">
-            <h1>User Profile</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-picture">
+          <img id="profileImg" src="{{ image_file }}" alt="Profile Picture">
+          {{ form.picture(id="profilePicInput", class="profile-form-control-file") }}
+          {% if form.picture.errors %}
+            {% for error in form.picture.errors %}
+              <span class="text-danger" style="position: relative; top: 15px;">{{ error }}</span><br>
+            {% endfor %}
+          {% endif %}
+          <label for="profilePicInput" class="upload-button">
+            <i class="fas fa-camera"></i> Change Picture
+          </label>
         </div>
-        <form method="POST" action="" enctype="multipart/form-data">
-            <div class="profile-content">
-                {{ form.hidden_tag() }}
-                <div class="profile-picture">
-                    <img id="profileImg" src="{{ image_file }}" alt="Profile Picture">
-                    {{ form.picture(id="profilePicInput", class="profile-form-control-file") }}
-                    {% if form.picture.errors %}
-                        {% for error in form.picture.errors %}
-                            <span class="text-danger" style="position: relative; top: 15px;">{{ error }}</span><br>
-                        {% endfor %}
-                    {% endif %}
-                    <label for="profilePicInput" class="upload-button">
-                        <i class="fas fa-camera"></i> Change Picture
-                    </label>
+      </div>
+      <div class="col-md-8">
+        <div class="profile-details">
+          <h1>Account Settings</h1>
+          <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="input-group">
+              {{ form.username.label(class="profile-form-label") }}
+              {% if form.username.errors %}
+                {{ form.username(class="profile-form-control is-invalid") }}
+                <div class="profile-invalid-feedback invalid-feedback">
+                  {% for error in form.username.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                  {% endfor %}
                 </div>
-                <div class="profile-details">
-                    <div class="input-group">
-                        {{ form.username.label(class="profile-form-label") }}
-                        {% if form.username.errors %}
-                            {{ form.username(class="profile-form-control is-invalid") }}
-                            <div class="profile-invalid-feedback invalid-feedback">
-                                {% for error in form.username.errors %}
-                                    <span class="text-danger">{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.username(class="profile-form-control") }}
-                        {% endif %}
-                    </div>
-                    <div class="input-group">
-                        {{ form.email.label(class="profile-form-label") }}
-                        {% if form.email.errors %}
-                            {{ form.email(class="profile-form-control is-invalid") }}
-                            <div class="profile-invalid-feedback invalid-feedback">
-                                {% for error in form.email.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.email(class="profile-form-control") }}
-                        {% endif %}
-                    </div>
-                    <div class="input-group">
-                        {{ form.submit(class="profile-btn") }}
-                    </div>
+              {% else %}
+                {{ form.username(class="profile-form-control") }}
+              {% endif %}
+            </div>
+            <div class="input-group">
+              {{ form.email.label(class="profile-form-label") }}
+              {% if form.email.errors %}
+                {{ form.email(class="profile-form-control is-invalid") }}
+                <div class="profile-invalid-feedback invalid-feedback">
+                  {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
                 </div>
+              {% else %}
+                {{ form.email(class="profile-form-control") }}
+              {% endif %}
             </div>
-        </form>
-        <div class="profile-progress">
-             <div class="progress-bar-container">
-                <div class="progress-bar" id="progressBar"></div>
+            <div class="input-group">
+              {{ form.submit(class="profile-btn") }}
             </div>
+          </form>
+          <div class="delete-account">
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account? This action is irreversible.</p>
+            <form method="POST" action="{{ url_for('users.delete_account') }}">
+              {{ form.hidden_tag() }}
+              <button type="submit" class="delete-btn">Delete Account</button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </main>
 {% endblock %}

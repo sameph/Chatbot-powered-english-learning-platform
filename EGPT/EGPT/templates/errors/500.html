@@ -1,8 +1,5 @@
-{% if current_user.is_admin %}
-    {% extends "admin_layout.html" %}
-{% else %}
-    {% extends "layout.html" %}
-{% endif %}
+{% extends "layout.html" %}
+
 {% block styles %}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
 	<!-- Custom stlylesheet -->
@@ -16,11 +13,9 @@
             </div>
             <h2>Something went wrong (500)</h2>
             <p>We're experiencing some trouble on our end. Please try again in the near future</p>
-            {% if current_user.username == 'admin' %}
-                <a href="{{url_for('main.admin_home')}}">Go To Admin Page</a>
-            {% else %}
-                <a href="{{url_for('main.home')}}">Go To Home Page</a>
-            {% endif %}
+           
+            <a href="{{url_for('main.home')}}">Go To Home Page</a>
+            
         </div>
     </div>
 {% endblock content %}
