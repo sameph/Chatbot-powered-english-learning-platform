@@ -2,55 +2,36 @@
 
 {% block content %}
 
-<!-- About Section -->
-<section id="about" class="about section">
-
-  <div class="container">
-
-    <div class="row gy-4">
-
-      <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-        <p class="who-we-are">Who We Are</p>
-        <h3>Empowering English Language Learners with Technology</h3>
-        <p class="fst-italic">
-          At EGPT, we believe that learning a new language should be engaging, effective, and accessible. Our platform leverages AI to deliver a 
-          customized and engaging learning experience for each user. It is designed to help learners improve their English language skills through
-          interactive lessons, chatbot and easily accessible Dictionary. Our goal is to make language learning fun, easy, and effective for everyone.
-        </p>
-        <ul>
-          <li><i class="bi bi-check-circle"></i> <span>AI-powered chatbot for interactive practice.</span></li>
-          <li><i class="bi bi-check-circle"></i> <span>Lessons tailored to your progress and goals.</span></li>
-          <li><i class="bi bi-check-circle"></i> <span>Learn at your own pace, anywhere and anytime.</span></li>
-        </ul>
-        <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-      </div>
-
-      <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-        <div class="row gy-4">
-          <div class="col-lg-6">
-            <img src="assets/img/about-company-1.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6">
-            <div class="row gy-4">
-              <div class="col-lg-12">
-                <img src="assets/img/about-company-2.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col-lg-12">
-                <img src="assets/img/about-company-3.jpg" class="img-fluid" alt="">
-              </div>
+<section id="about-me" class="about-me section">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <!-- About Content -->
+            <div class="col-lg-10" data-aos="fade-up">
+                <div class="about-me-info text-center">
+                    <h2 class="mb-4">Samuel Ephrem</h2>
+                    <p class="subtitle mb-3">Full-Stack Developer & AI Enthusiast</p>
+                    <div class="mb-4">
+                        <a href="{{url_for('main.contact_us')}}" class="btn btn-primary custom-btn px-4 py-2 shadow-sm">Let's Connect</a>
+                    </div>
+                    <p class="about-text">
+                        I am a recent Computer Science graduate and a full-stack developer with a passion for creating innovative web applications and integrating AI to enhance user experiences. I specialize in building tailored websites that combine modern designs with functionality.
+                    </p>
+                    <p class="about-text">
+                        My expertise spans both frontend and backend development, with a strong interest in AI-driven solutions. I aim to make websites smarter and more adaptive, ensuring they meet the unique needs of each user.
+                    </p>
+                    <ul class="key-skills mt-4 text-left">
+                        <li><i class="bi bi-star-fill"></i><strong> Key Skills:</strong> Full-Stack Development, AI Integration, UX/UI Design</li>
+                        <li><i class="bi bi-star-fill"></i><strong> Technologies:</strong> Python, JavaScript, Flask, React, SQL, PyTorch</li>
+                        <li><i class="bi bi-star-fill"></i><strong> Projects:</strong> Amharic text to Ethiopian sign language translator, Home appliance selling website and more...</li>
+                    </ul>
+                </div>
+                <div class="social-links text-center mt-4">
+                    <a href="https://linkedin.com/in/sam-eph" class="btn btn-outline-primary m-1 social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/sameph" class="btn btn-outline-dark m-1 social-btn"><i class="fab fa-github"></i> GitHub</a>
+                </div>
             </div>
-          </div>
         </div>
-
-      </div>
-
     </div>
-
-  </div>
-</section><!-- /About Section -->
-
-  </div>
-
-</section><!-- /Pricing Section -->
+</section>
 
 {% endblock content %}

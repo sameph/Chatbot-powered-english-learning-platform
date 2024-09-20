@@ -115,10 +115,12 @@ def chat():
 
 @main.route("/admin/messages")
 @login_required
-def admin_messages():
-    messages = Messages.query.all()
+def messages():
+    page = request.args.get('page', 1, type=int)  # Get the current page from the query string (default is 1)
+    messages = Messages.query.paginate(page=page, per_page=3)  # Paginate with 3 messages per page
+    
     if current_user.is_admin:
-        return render_template('admin.html', messages = messages)
+        return render_template('admin.html', messages=messages)
     else:
         abort(403)
 

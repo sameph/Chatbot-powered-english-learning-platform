@@ -1,67 +1,92 @@
 /*--------------------------------------------------------------
-# About Section
+# About Me Section - Simplified, Elegant Design
 --------------------------------------------------------------*/
-.about .content .who-we-are {
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+
+.about-me {
+  padding: 80px 0;
+  background-color: #f5f5f5;
+  font-family: 'Arial', sans-serif;
 }
 
-.about .content h3 {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
-  padding-bottom: 10px;
-}
-
-.about .content ul i {
-  font-size: 1.25rem;
-  margin-right: 4px;
-  color: var(--accent-color);
-}
-
-.about .content p:last-child {
-  margin-bottom: 0;
-}
-
-.about .content .read-more {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  font-family: var(--heading-font);
-  font-weight: 500;
-  font-size: 16px;
+.about-me h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #333;
   letter-spacing: 1px;
-  padding: 12px 24px;
-  border-radius: 5px;
-  transition: 0.3s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.about .content .read-more i {
-  font-size: 18px;
-  margin-left: 5px;
-  line-height: 0;
-  transition: 0.3s;
+.about-me .subtitle {
+  font-size: 1.25rem;
+  color: #666;
+  font-weight: 400;
 }
 
-.about .content .read-more:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
-  padding-right: 19px;
+.about-me .about-text {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.7;
+  margin-top: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.about .content .read-more:hover i {
-  margin-left: 10px;
+.about-me ul {
+  padding: 0;
+  list-style: none;
+  margin-top: 30px;
 }
 
-.about .about-images img {
-  border-radius: 10px;
+.about-me ul li {
+  margin-bottom: 10px;
+  font-size: 1.125rem;
+  color: #444;
+}
+
+.about-me ul li i {
+  color: #71c55d;
+  margin-right: 10px;
+}
+
+.custom-btn {
+  background-color: #71c55d;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #9dd38f;
+}
+
+.social-links .social-btn {
+  margin: 5px;
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.social-links .social-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.social-links .btn-outline-dark:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Animations */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }

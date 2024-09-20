@@ -1,6 +1,5 @@
 import os
 
-
 class Config:
     SECRET_KEY = '5791628bb0b13ce0c676dfde280ba245'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
@@ -9,3 +8,6 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'samuelephrem07@gmail.com'
     MAIL_PASSWORD = 'xhbnobattesfqcjm'
+    MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # Limit the file upload size to 16MB
+    UPLOAD_FOLDER = 'static/profile_pics'
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}

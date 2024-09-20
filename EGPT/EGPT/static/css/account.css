@@ -1,5 +1,4 @@
-/* Add some basic styling to the account page */
-
+/* Basic styling for the account page */
 .container {
   max-width: 1200px;
   margin: 40px auto;
@@ -28,26 +27,6 @@
   transform: scale(1.05);
 }
 
-.upload-button {
-  display: inline-block;
-  background-color: #6d85e5;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 14px;
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.upload-button:hover {
-  background-color: #624aec;
-}
-
 .profile-details {
   padding: 20px;
 }
@@ -59,17 +38,16 @@
 }
 
 .input-group label {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 5px;
   font-weight: bold;
   color: #333;
-  display: flex;
-  align-items: center;
 }
 
 .input-group label i {
   margin-right: 10px;
-  color: #6c63ff;
+  color: #71c55d;
 }
 
 .input-group input,
@@ -84,13 +62,13 @@
 
 .input-group input:focus,
 .input-group .profile-form-control-file:focus {
-  border-color: #6c63ff;
+  border-color: #71c55d;
   outline: none;
 }
 
 button,
-.profile-btn {
-  background-color: #8ad7d7;
+.profile-btn,
+.delete-btn {
   color: #fff;
   border: none;
   padding: 12px 25px;
@@ -99,6 +77,11 @@ button,
   font-size: 16px;
   transition: background-color 0.3s ease;
   margin-top: 10px;
+}
+
+button,
+.profile-btn {
+  background-color: #8ad7d7;
 }
 
 button:hover,
@@ -116,13 +99,6 @@ button:hover,
 
 .delete-btn {
   background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
 }
 
 .delete-btn:hover {

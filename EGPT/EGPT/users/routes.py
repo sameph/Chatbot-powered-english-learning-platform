@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from EGPT import db, bcrypt
-from EGPT.models import User, Messages
+from EGPT.models import User, Messages, UserProgress
 from EGPT.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                                    RequestResetForm, ResetPasswordForm)
 from EGPT.users.utils import save_picture, send_reset_email
@@ -57,28 +57,30 @@ def account():
     form = UpdateAccountForm()
     if form.validate_on_submit():
         changes_made = False
+
+        # Handle profile picture update
         if form.picture.data:
-            if not form.picture.validate(form):
-                flash('Invalid file format. Only JPG and PNG images are allowed.', 'danger')
-                return redirect(url_for('users.account'))
             picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file 
+            current_user.image_file = picture_file
             changes_made = True
 
+        # Handle username update
         if current_user.username != form.username.data:
             current_user.username = form.username.data
             changes_made = True
 
+        # Handle email update
         if current_user.email != form.email.data:
             current_user.email = form.email.data
             changes_made = True
 
+        # Commit changes to the database
         if changes_made:
             db.session.commit()
             flash('Your account has been updated!', 'success')
         else:
-            flash('No changes were made.', 'danger')
-        
+            flash('No changes were made.', 'info')
+
         return redirect(url_for('users.account'))
 
     elif request.method == 'GET':
@@ -94,6 +96,8 @@ def account():
 @login_required
 def delete_account():
     user = current_user
+    Messages.query.filter_by(user_id=user.id).delete()
+    UserProgress.query.filter_by(user_id=user.id).delete()
     db.session.delete(user)
     db.session.commit()
     flash('Your account has been deleted.', 'success')

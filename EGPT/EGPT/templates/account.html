@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <main>
   <div class="container">
+    <form method="POST" action="" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-4">
         <div class="profile-picture">
@@ -15,15 +16,11 @@
               <span class="text-danger" style="position: relative; top: 15px;">{{ error }}</span><br>
             {% endfor %}
           {% endif %}
-          <label for="profilePicInput" class="upload-button">
-            <i class="fas fa-camera"></i> Change Picture
-          </label>
         </div>
       </div>
       <div class="col-md-8">
         <div class="profile-details">
           <h1>Account Settings</h1>
-          <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="input-group">
               {{ form.username.label(class="profile-form-label") }}
